@@ -20,9 +20,9 @@ namespace SimpleConsoleApp1
             try
             {
                 var message = args.Any() ? args[0] : "PING";
-                Trace.TraceInformation("Message: {0}", message);
+                Console.Out.WriteLine("Message: {0}", message);
                 var connectionString = CloudConfigurationManager.GetSetting(StorageAccountConnectionString);
-                Trace.TraceInformation("Connection String: {0}", connectionString);
+                Console.Out.WriteLine("Connection String: {0}", connectionString);
 
                 var queueUtilities = new QueueUtilities(connectionString);
                 var queueClient = queueUtilities.NewCloudQueueClient("queue");
@@ -31,7 +31,7 @@ namespace SimpleConsoleApp1
             }
             catch (Exception exc)
             {
-                Trace.TraceError(exc.ToString());
+                Console.Error.WriteLine(exc.ToString());
             }
         }
 
